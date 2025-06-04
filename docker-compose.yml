@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: semantic-chunking-app
+    volumes:
+      - ./output:/app/output # Mounts the output directory to persist plots
+    # Uncomment the section below if you have an NVIDIA GPU and NVIDIA Docker runtime configured
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    tty: true # Keeps the container running to see output, useful for scripts
+    stdin_open: true # For interactive use if needed in the future 
